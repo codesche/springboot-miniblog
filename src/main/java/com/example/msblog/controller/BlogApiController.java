@@ -8,10 +8,7 @@ import com.example.msblog.service.BlogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,6 +43,15 @@ public class BlogApiController {
         return ResponseEntity.ok().body(articles);
     }
 
+    // @PathVariable => URL에서 값을 가져오는 애너테이션
+    // /api/articles/3 GET 요청 받을 시 id에 3이 들어옴
+    // findById() 메서드로 넘어가 3번 블로그 글을 찾음
+    @GetMapping("/api/articles/{id}")
+    // URL 경로에서 값 추출
+    public ResponseEntity<ArticleResponse> findArticle(@PathVariable long id) {
+        Article article = blogService.findById(id);
 
+        return ResponseEntity.ok().body(new ArticleResponse(article));
+    }
 
 }
