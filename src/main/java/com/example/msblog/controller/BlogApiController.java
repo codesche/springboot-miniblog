@@ -3,6 +3,7 @@ package com.example.msblog.controller;
 import com.example.msblog.domain.Article;
 import com.example.msblog.dto.AddArticleRequest;
 import com.example.msblog.dto.ArticleResponse;
+import com.example.msblog.dto.UpdateArticleRequest;
 import com.example.msblog.service.BlogService;
 
 import lombok.RequiredArgsConstructor;
@@ -60,6 +61,15 @@ public class BlogApiController {
         blogService.delete(id);
 
         return ResponseEntity.ok().build();
+    }
+
+    // 업데이트 메서드 작성
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable long id,
+                                                @RequestBody UpdateArticleRequest request) {
+        Article updatedArticle = blogService.update(id, request);
+
+        return ResponseEntity.ok().body(updatedArticle);
     }
 
 }
