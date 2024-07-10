@@ -2,7 +2,9 @@ package com.example.msblog.service;
 
 import com.example.msblog.domain.Article;
 import com.example.msblog.dto.AddArticleRequest;
+import com.example.msblog.dto.UpdateArticleRequest;
 import com.example.msblog.repository.BlogRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,17 @@ public class BlogService {
     // 삭제 메서드 추가
     public void delete(long id) {
         blogRepository.deleteById(id);
+    }
+
+    // 업데이트 메서드 추가
+    @Transactional          // 트랜잭션 메서드
+    public Article update(long id, UpdateArticleRequest request) {
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+
+        article.update(request.getTitle(), request.getContent());
+
+        return article;
     }
 
 }
