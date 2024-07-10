@@ -54,4 +54,12 @@ public class BlogApiController {
         return ResponseEntity.ok().body(new ArticleResponse(article));
     }
 
+    // 삭제 메서드 작성
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
+        blogService.delete(id);
+
+        return ResponseEntity.ok().build();
+    }
+
 }
