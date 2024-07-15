@@ -26,7 +26,7 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @CreatedDate        // 엔티티가 생성될 때 생성 시간 지정가
+    @CreatedDate        // 엔티티가 생성될 때 생성 시간 지정
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
