@@ -54,20 +54,20 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    // 인증 관리자 관련 설정
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() throws Exception {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(userService);
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//    // 인증 관리자 관련 설정
+//    @Bean
+//    public DaoAuthenticationProvider daoAuthenticationProvider() throws Exception {
+//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setUserDetailsService(userService);
+//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//
+//        return daoAuthenticationProvider;
+//    }
 
-        return daoAuthenticationProvider;
-    }
-
-    @Bean
-    public static PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+//    @Bean
+//    public static PasswordEncoder passwordEncoder() {
+//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
