@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TokenProviderTest {
@@ -63,7 +62,7 @@ class TokenProviderTest {
                 .createToken(jwtProperties);
 
         // when
-        boolean result = tokenProvider.vaildToken(token);
+        boolean result = tokenProvider.validToken(token);
 
         // then
         assertThat(result).isFalse();
@@ -77,7 +76,7 @@ class TokenProviderTest {
                 .createToken(jwtProperties);
 
         // when
-        boolean result = tokenProvider.vaildToken(token);
+        boolean result = tokenProvider.validToken(token);
 
         // then
         assertThat(result).isTrue();
