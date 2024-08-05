@@ -46,7 +46,7 @@ public class TokenProvider {
     }
 
     // JWT 토큰 유효성 검증 메서드
-    public boolean vaildToken(String token) {
+    public boolean validToken(String token) {
         try {
             Jwts.parser()
                     .setSigningKey(jwtProperties.getSecretkey())        // 비밀값으로 복호화
