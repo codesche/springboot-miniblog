@@ -54,7 +54,7 @@ class TokenProviderTest {
     // validToken() 검증 테스트
     @DisplayName("validToken(): 만료된 토큰인 때에 유효성 검증에 실패한다.")
     @Test
-    void vaildToken_invalidToken() {
+    void validToken_invalidToken() {
         // given
         String token = JwtFactory.builder()
                 .expiration(new Date(new Date().getTime() - Duration.ofDays(7).toMillis()))
