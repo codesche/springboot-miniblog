@@ -29,12 +29,6 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Builder
-    public User(String email, String password, String auth) {
-        this.email = email;
-        this.password = password;
-    }
-
     @Override           // 권한 반환, 사용자 이외의 권한이 없기 때문에 user 권한만 담아 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("user"));
@@ -74,5 +68,22 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;                // true -> 사용 가능
+    }
+
+    // 사용자 이름
+    @Column(name = "nickname", unique = true)
+    private String nickname;
+
+    @Builder
+    public User(String email, String password, String auth, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;           // OAuth2 사용 위한 닉네임 추가
+    }
+
+    // 사용자 이름 변경
+    public User update(String nickname) {
+        this.nickname = nickname;
+        return this;
     }
 }
