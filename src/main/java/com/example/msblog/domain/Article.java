@@ -39,7 +39,7 @@ public class Article {
     private String author;
 
     @Builder    // 빌더 패턴으로 작성
-    public Article(String title, String content) {
+    public Article(String author, String title, String content) {
         this.author = author;           // 글쓴이 추가
         this.title = title;
         this.content = content;
