@@ -34,8 +34,13 @@ public class Article {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // 글쓴이 추가하기
+    @Column(name = "author", nullable = false)
+    private String author;
+
     @Builder    // 빌더 패턴으로 작성
     public Article(String title, String content) {
+        this.author = author;           // 글쓴이 추가
         this.title = title;
         this.content = content;
     }
